@@ -1,31 +1,47 @@
-## GoIT Node.js Course Template Homework
+# GoIT Node.js Homework
 
-Выполните форк этого репозитория для выполнения домашних заданий (2-6)
-Форк создаст репозиторий на вашем http://github.com
+http://localhost:3000/api/
 
-Добавьте ментора в коллаборацию
+Method - Endpoint - Operation - Required Data
 
-Для каждой домашней работы создавайте свою ветку.
+### AUTHORIZATION
 
-- hw02
-- hw03
-- hw04
-- hw05
-- hw06
+POST /auth/signup - register/signup (body - {email, password,
+subscription:starter/pro/business})
 
-Каждая новая ветка для дз должна делаться с master
+POST /auth/login - Login (body - {email, password})
 
-После того как вы закончили выполнять домашнее задание в своей ветке, необходимо сделать пулл-реквест (PR). Потом добавить ментора для ревью кода. Только после того как ментор заапрувит PR, вы можете выполнить мердж ветки с домашним заданием в мастер.
+GET /auth/logout - Logout
 
-Внимательно читайте комментарии ментора. Исправьте замечания и сделайте коммит в ветке с домашним заданием. Изменения подтянуться в PR автоматически после того как вы отправите коммит с исправлениями на github
-После исправления снова добавьте ментора на ревью кода.
+### CONTACT LIST
 
-- При сдаче домашней работы есть ссылка на PR
-- JS-код чистый и понятный, для форматирования используется Prettier
+Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
+Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true)
+
+GET /contacts - get all contacts (Pagination URL - page = 2, limit = 4)
+
+GET /contacts/:contactId - get 1 contact (id)
+
+POST /contacts - add new contact (name, email ,phone, [favorite])
+
+DELETE /contacts/:contactId - delete contact (id)
+
+PUT /contacts/:contactId - update contact (id)
+
+PATCH /contacts/:contactId/favorite - update status "favorite" (body -
+{favorite:true/false})
+
+### USER
+
+GET /users/current - Get current user
+
+62a352c61b9683bb8f084161
 
 ### Команды:
 
 - `npm start` &mdash; старт сервера в режиме production
 - `npm run start:dev` &mdash; старт сервера в режиме разработки (development)
-- `npm run lint` &mdash; запустить выполнение проверки кода с eslint, необходимо выполнять перед каждым PR и исправлять все ошибки линтера
-- `npm lint:fix` &mdash; та же проверка линтера, но с автоматическими исправлениями простых ошибок
+- `npm run lint` &mdash; запустить выполнение проверки кода с eslint, необходимо
+  выполнять перед каждым PR и исправлять все ошибки линтера
+- `npm lint:fix` &mdash; та же проверка линтера, но с автоматическими
+  исправлениями простых ошибок
