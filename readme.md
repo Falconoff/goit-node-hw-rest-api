@@ -1,4 +1,4 @@
-## GoIT Node.js Homework
+# GoIT Node.js Homework
 
 Дополнительное задание выполнено:
 
@@ -7,9 +7,13 @@
 - Сделано обновление подписки (subscription) пользователя (PATCH /users),
   которая принимает одно из следующих значений ['starter', 'pro', 'business'].
 
+---
+
+## Endpoints
+
 **http://localhost:3000/api/** - path
 
-### AUTHORIZATION
+#### Authorization
 
 | Method | Endpoint     | Operation       | Required Data                                               |
 | ------ | ------------ | --------------- | ----------------------------------------------------------- |
@@ -17,7 +21,7 @@
 | POST   | /auth/login  | Login           | Body - {email, password}                                    |
 | GET    | /auth/logout | Logout          | -                                                           |
 
-### CONTACT LIST
+#### Contact list
 
 | Method | Endpoint                      | Operation                | Required Data                             |
 | ------ | ----------------------------- | ------------------------ | ----------------------------------------- |
@@ -28,12 +32,14 @@
 | PUT    | /contacts/:contactId          | update contact           | (URL - contactId)                         |
 | PATCH  | /contacts/:contactId/favorite | update status "favorite" | Body - {favorite:true/false}              |
 
-### USER
+#### Users
 
 | Method | Endpoint       | Operation                  | Required Data                              |
 | ------ | -------------- | -------------------------- | ------------------------------------------ |
 | GET    | /users/current | Get current user           | -                                          |
 | PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
+
+---
 
 ### Команды:
 
