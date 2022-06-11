@@ -4,10 +4,6 @@ const bcrypt = require("bcrypt");
 
 const userSchema = Schema(
   {
-    // name: {
-    //   type: String,
-    //   required: [true, "Set name for contact"],
-    // },
     email: {
       type: String,
       required: [true, "Email is required"],
@@ -40,10 +36,9 @@ userSchema.methods.comparePassword = function (password) {
 };
 
 const joiRegisterSchema = Joi.object({
-  // name: Joi.string().min(2).max(30).required(),
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
-  subscription: Joi.string(),
+  subscription: Joi.string().valid("starter", "pro", "business"),
 });
 
 const joiLoginSchema = Joi.object({
@@ -52,7 +47,7 @@ const joiLoginSchema = Joi.object({
 });
 
 const subscriptionJoiSchema = Joi.object({
-  subscription: Joi.string().required(),
+  subscription: Joi.string().valid("starter", "pro", "business"),
 });
 
 const User = model("user", userSchema);

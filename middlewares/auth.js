@@ -18,9 +18,6 @@ const auth = async (req, res, next) => {
       throw new Unauthorized("Not authorized");
     }
 
-    // console.log("User name is", user.name);
-    // console.log("User ID:", user._id);
-
     req.user = user;
     next();
   } catch (error) {

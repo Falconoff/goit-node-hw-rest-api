@@ -1,41 +1,39 @@
-# GoIT Node.js Homework
+## GoIT Node.js Homework
 
-http://localhost:3000/api/
+Дополнительное задание выполнено:
 
-Method - Endpoint - Operation - Required Data
+- Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
+- Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true).
+- Сделано обновление подписки (subscription) пользователя (PATCH /users),
+  которая принимает одно из следующих значений ['starter', 'pro', 'business'].
+
+**http://localhost:3000/api/** - path
 
 ### AUTHORIZATION
 
-POST /auth/signup - register/signup (body - {email, password,
-subscription:starter/pro/business})
-
-POST /auth/login - Login (body - {email, password})
-
-GET /auth/logout - Logout
+| Method | Endpoint     | Operation       | Required Data                                               |
+| ------ | ------------ | --------------- | ----------------------------------------------------------- |
+| POST   | /auth/signup | register/signup | Body - {email, password, subscription:starter/pro/business} |
+| POST   | /auth/login  | Login           | Body - {email, password}                                    |
+| GET    | /auth/logout | Logout          | -                                                           |
 
 ### CONTACT LIST
 
-Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
-Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true)
-
-GET /contacts - get all contacts (Pagination URL - page = 2, limit = 4)
-
-GET /contacts/:contactId - get 1 contact (id)
-
-POST /contacts - add new contact (name, email ,phone, [favorite])
-
-DELETE /contacts/:contactId - delete contact (id)
-
-PUT /contacts/:contactId - update contact (id)
-
-PATCH /contacts/:contactId/favorite - update status "favorite" (body -
-{favorite:true/false})
+| Method | Endpoint                      | Operation                | Required Data                             |
+| ------ | ----------------------------- | ------------------------ | ----------------------------------------- |
+| GET    | /contacts                     | get all contacts         | (Pagination: URL - page = 2, limit = 4)   |
+| GET    | /contacts/:contactId          | get 1 contact            | (URL - contactId)                         |
+| POST   | /contacts                     | add new contact          | Body - {name, email ,phone, \[favorite\]} |
+| DELETE | /contacts/:contactId          | delete contact           | (URL - contactId)                         |
+| PUT    | /contacts/:contactId          | update contact           | (URL - contactId)                         |
+| PATCH  | /contacts/:contactId/favorite | update status "favorite" | Body - {favorite:true/false}              |
 
 ### USER
 
-GET /users/current - Get current user
-
-62a352c61b9683bb8f084161
+| Method | Endpoint       | Operation                  | Required Data                              |
+| ------ | -------------- | -------------------------- | ------------------------------------------ |
+| GET    | /users/current | Get current user           | -                                          |
+| PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
 
 ### Команды:
 

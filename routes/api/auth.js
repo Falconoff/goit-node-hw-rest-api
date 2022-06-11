@@ -6,8 +6,6 @@ const { auth, validation, ctrlWrapper } = require("../../middlewares");
 
 const { joiRegisterSchema, joiLoginSchema } = require("../../models/user");
 
-// const validateMiddleware = validation(joiSchema);
-
 const router = express.Router();
 
 // Register

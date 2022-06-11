@@ -1,5 +1,4 @@
 const { NotFound } = require("http-errors");
-// const { Contact } = require("../../models");
 const { User } = require("../../models");
 
 const updateSubscriptionStatus = async (req, res) => {
