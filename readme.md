@@ -1,31 +1,51 @@
-## GoIT Node.js Course Template Homework
+# GoIT Node.js Homework
 
-Выполните форк этого репозитория для выполнения домашних заданий (2-6)
-Форк создаст репозиторий на вашем http://github.com
+Дополнительное задание выполнено:
 
-Добавьте ментора в коллаборацию
+- Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
+- Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true).
+- Сделано обновление подписки (subscription) пользователя (PATCH /users),
+  которая принимает одно из следующих значений ['starter', 'pro', 'business'].
 
-Для каждой домашней работы создавайте свою ветку.
+---
 
-- hw02
-- hw03
-- hw04
-- hw05
-- hw06
+## Endpoints
 
-Каждая новая ветка для дз должна делаться с master
+**http://localhost:3000/api/** - path
 
-После того как вы закончили выполнять домашнее задание в своей ветке, необходимо сделать пулл-реквест (PR). Потом добавить ментора для ревью кода. Только после того как ментор заапрувит PR, вы можете выполнить мердж ветки с домашним заданием в мастер.
+#### Authorization
 
-Внимательно читайте комментарии ментора. Исправьте замечания и сделайте коммит в ветке с домашним заданием. Изменения подтянуться в PR автоматически после того как вы отправите коммит с исправлениями на github
-После исправления снова добавьте ментора на ревью кода.
+| Method | Endpoint     | Operation       | Required Data                                               |
+| ------ | ------------ | --------------- | ----------------------------------------------------------- |
+| POST   | /auth/signup | register/signup | Body - {email, password, subscription:starter/pro/business} |
+| POST   | /auth/login  | Login           | Body - {email, password}                                    |
+| GET    | /auth/logout | Logout          | -                                                           |
 
-- При сдаче домашней работы есть ссылка на PR
-- JS-код чистый и понятный, для форматирования используется Prettier
+#### Contact list
+
+| Method | Endpoint                      | Operation                | Required Data                             |
+| ------ | ----------------------------- | ------------------------ | ----------------------------------------- |
+| GET    | /contacts                     | get all contacts         | (Pagination: URL - page = 2, limit = 4)   |
+| GET    | /contacts/:contactId          | get 1 contact            | (URL - contactId)                         |
+| POST   | /contacts                     | add new contact          | Body - {name, email ,phone, \[favorite\]} |
+| DELETE | /contacts/:contactId          | delete contact           | (URL - contactId)                         |
+| PUT    | /contacts/:contactId          | update contact           | (URL - contactId)                         |
+| PATCH  | /contacts/:contactId/favorite | update status "favorite" | Body - {favorite:true/false}              |
+
+#### Users
+
+| Method | Endpoint       | Operation                  | Required Data                              |
+| ------ | -------------- | -------------------------- | ------------------------------------------ |
+| GET    | /users/current | Get current user           | -                                          |
+| PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
+
+---
 
 ### Команды:
 
 - `npm start` &mdash; старт сервера в режиме production
 - `npm run start:dev` &mdash; старт сервера в режиме разработки (development)
-- `npm run lint` &mdash; запустить выполнение проверки кода с eslint, необходимо выполнять перед каждым PR и исправлять все ошибки линтера
-- `npm lint:fix` &mdash; та же проверка линтера, но с автоматическими исправлениями простых ошибок
+- `npm run lint` &mdash; запустить выполнение проверки кода с eslint, необходимо
+  выполнять перед каждым PR и исправлять все ошибки линтера
+- `npm lint:fix` &mdash; та же проверка линтера, но с автоматическими
+  исправлениями простых ошибок
