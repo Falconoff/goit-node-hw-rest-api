@@ -1,11 +1,6 @@
-# GoIT Node.js Homework
+# GoIT Node.js Homework-05
 
-Дополнительное задание выполнено:
-
-- Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
-- Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true).
-- Сделано обновление подписки (subscription) пользователя (PATCH /users),
-  которая принимает одно из следующих значений ['starter', 'pro', 'business'].
+Дополнительное задание (тестирование) не выполнено.
 
 ---
 
@@ -19,7 +14,7 @@
 | ------ | ------------ | --------------- | ----------------------------------------------------------- |
 | POST   | /auth/signup | register/signup | Body - {email, password, subscription:starter/pro/business} |
 | POST   | /auth/login  | Login           | Body - {email, password}                                    |
-| GET    | /auth/logout | Logout          | -                                                           |
+| GET    | /auth/logout | Logout          | token                                                       |
 
 #### Contact list
 
@@ -36,8 +31,9 @@
 
 | Method | Endpoint       | Operation                  | Required Data                              |
 | ------ | -------------- | -------------------------- | ------------------------------------------ |
-| GET    | /users/current | Get current user           | -                                          |
+| GET    | /users/current | Get current user           | token                                      |
 | PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
+| PATCH  | /users/avatars | Update Avatar              | Body - image file                          |
 
 ---
 
@@ -49,3 +45,12 @@
   выполнять перед каждым PR и исправлять все ошибки линтера
 - `npm lint:fix` &mdash; та же проверка линтера, но с автоматическими
   исправлениями простых ошибок
+
+---
+
+Дополнительное задание Homework-04 выполнено:
+
+- Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
+- Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true).
+- Сделано обновление подписки (subscription) пользователя (PATCH /users),
+  которая принимает одно из следующих значений ['starter', 'pro', 'business'].
