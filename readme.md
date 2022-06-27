@@ -1,6 +1,6 @@
-# GoIT Node.js Homework-05
+# GoIT Node.js Homework-06
 
-Дополнительное задание (тестирование) не выполнено.
+(задание)[https://github.com/goitacademy/nodejs-homework/tree/master/homework-06]
 
 ---
 
