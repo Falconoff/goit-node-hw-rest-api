@@ -1,7 +1,9 @@
 const { Conflict } = require("http-errors");
 const gravatar = require("gravatar");
+const { nanoid } = require("nanoid");
 
 const { User } = require("../../models");
+const { sendEmail } = require("../../helpers");
 
 const register = async (req, res) => {
   const { email, password, subscription } = req.body;
@@ -13,9 +15,23 @@ const register = async (req, res) => {
   }
 
   const avatarURL = gravatar.url(email);
-  const newUser = new User({ email, subscription, avatarURL });
+  const verificationToken = nanoid();
+  const newUser = new User({
+    email,
+    subscription,
+    avatarURL,
+    verificationToken,
+  });
   newUser.setPassword(password);
-  newUser.save();
+  await newUser.save();
+
+  const mail = {
+    to: email,
+    subject: "Confirm your email",
+    html: `<a href="http://localhost:3000/api/users/verify/${verificationToken}"> target="_blank"Please, confirm your e-mail</a>`,
+  };
+
+  await sendEmail(mail);
 
   res.status(201).json({
     status: "success",
@@ -25,6 +41,7 @@ const register = async (req, res) => {
         email,
         subscription,
         avatarURL,
+        verificationToken,
       },
     },
   });
