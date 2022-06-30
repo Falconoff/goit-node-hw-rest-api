@@ -29,11 +29,13 @@
 
 #### Users
 
-| Method | Endpoint       | Operation                  | Required Data                              |
-| ------ | -------------- | -------------------------- | ------------------------------------------ |
-| GET    | /users/current | Get current user           | token                                      |
-| PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
-| PATCH  | /users/avatars | Update Avatar              | Body - image file                          |
+| Method | Endpoint                         | Operation                  | Required Data                              |
+| ------ | -------------------------------- | -------------------------- | ------------------------------------------ |
+| GET    | /users/current                   | Get current user           | token                                      |
+| GET    | /users/verify/:verificationToken | Verify registered user     | verificationToken                          |
+| POST   | /users/verify                    | Resend verification letter | Body - email                               |
+| PATCH  | /users                           | Update Subscription status | Body - {subscription:starter/pro/business} |
+| PATCH  | /users/avatars                   | Update Avatar              | Body - image file                          |
 
 ---
 
@@ -47,6 +49,8 @@
   исправлениями простых ошибок
 
 ---
+
+### Заметки:
 
 Дополнительное задание Homework-04 выполнено:
 
