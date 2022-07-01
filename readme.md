@@ -1,6 +1,6 @@
-# GoIT Node.js Homework-05
+# GoIT Node.js Homework-06
 
-Дополнительное задание (тестирование) не выполнено.
+(задание)[https://github.com/goitacademy/nodejs-homework/tree/master/homework-06]
 
 ---
 
@@ -29,11 +29,13 @@
 
 #### Users
 
-| Method | Endpoint       | Operation                  | Required Data                              |
-| ------ | -------------- | -------------------------- | ------------------------------------------ |
-| GET    | /users/current | Get current user           | token                                      |
-| PATCH  | /users         | Update Subscription status | Body - {subscription:starter/pro/business} |
-| PATCH  | /users/avatars | Update Avatar              | Body - image file                          |
+| Method | Endpoint                         | Operation                  | Required Data                              |
+| ------ | -------------------------------- | -------------------------- | ------------------------------------------ |
+| GET    | /users/current                   | Get current user           | token                                      |
+| GET    | /users/verify/:verificationToken | Verify registered user     | verificationToken                          |
+| POST   | /users/verify                    | Resend verification letter | Body - email                               |
+| PATCH  | /users                           | Update Subscription status | Body - {subscription:starter/pro/business} |
+| PATCH  | /users/avatars                   | Update Avatar              | Body - image file                          |
 
 ---
 
@@ -48,9 +50,18 @@
 
 ---
 
+### Заметки:
+
 Дополнительное задание Homework-04 выполнено:
 
 - Сделана пагинация для коллекции контактов (GET /contacts?page=1&limit=20).
 - Сделана фильтрация контактов по полю избранного (GET /contacts?favorite=true).
 - Сделано обновление подписки (subscription) пользователя (PATCH /users),
   которая принимает одно из следующих значений ['starter', 'pro', 'business'].
+
+---
+
+[temp-mail](https://temp-mail.org/ru/) Временная почта - позволяет принимать
+электронные письма на временный одноразовый email, который самоуничтожается
+через определенное время. Сервис также известен как “анонимная почта” или “почта
+на 10 минут”.
