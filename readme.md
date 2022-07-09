@@ -1,6 +1,6 @@
 # GoIT Node.js Homework-06
 
-(задание)[https://github.com/goitacademy/nodejs-homework/tree/master/homework-06]
+[задание](https://github.com/goitacademy/nodejs-homework/tree/master/homework-06)
 
 ---
 
